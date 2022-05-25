@@ -13,7 +13,6 @@ import io.vertx.serviceproxy.ServiceBinder;
 public class RedisVerticle extends AbstractVerticle {
 
   private static final int MAX_RECONNECT_RETRIES = 16;
-
   private final RedisOptions options = new RedisOptions();
   private RedisConnection client;
   private final AtomicBoolean CONNECTING = new AtomicBoolean();
@@ -22,17 +21,13 @@ public class RedisVerticle extends AbstractVerticle {
   public void start() {
     new ServiceBinder(vertx)
       .setAddress("store.redis.service")
-      .registerLocal(RedisService.class, new RedisProvider());
-    createRedisClient()
-      .onSuccess(conn -> {
-        // connected to redis!
-      });
+      .registerLocal(RedisService.class, RedisService.create(vertx));
+//    createRedisClient()
+//      .onSuccess(conn -> {
+//        // connected to redis!
+//      });
   }
 
-  /**
-   * Will create a redis client and setup a reconnect handler when there is
-   * an exception in the connection.
-   */
   private Future<RedisConnection> createRedisClient() {
     Promise<RedisConnection> promise = Promise.promise();
 

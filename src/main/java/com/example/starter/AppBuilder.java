@@ -13,8 +13,8 @@ import io.vertx.ext.web.handler.ErrorHandler;
 import io.vertx.ext.web.handler.TimeoutHandler;
 
 public class AppBuilder {
-  private Router router;
-  private Vertx vertx;
+  private final Router router;
+  private final Vertx vertx;
 
   public AppBuilder(Vertx vertx) {
     this.vertx = vertx;

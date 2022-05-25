@@ -32,8 +32,8 @@ dependencies {
   implementation("io.vertx:vertx-web")
   implementation("io.vertx:vertx-service-proxy")
   implementation("io.vertx:vertx-codegen:4.3.0:processor")
-//  implementation("io.vertx:vertx-grpc")
-//  implementation("io.vertx:vertx-json-schema")
+  implementation("io.vertx:vertx-grpc")
+  implementation("io.vertx:vertx-json-schema")
 //  implementation("io.vertx:vertx-kafka-client")
   implementation("io.vertx:vertx-redis-client")
   compileOnly("io.vertx:vertx-codegen")
@@ -46,8 +46,10 @@ dependencies {
 }
 
 java {
-  sourceCompatibility = JavaVersion.VERSION_11
-  targetCompatibility = JavaVersion.VERSION_11
+  sourceCompatibility = JavaVersion.VERSION_17
+  targetCompatibility = JavaVersion.VERSION_17
+  // sourceCompatibility = JavaVersion.VERSION_11
+  // targetCompatibility = JavaVersion.VERSION_11
 }
 
 tasks.withType<ShadowJar> {

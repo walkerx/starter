@@ -7,7 +7,9 @@ import io.vertx.core.Vertx;
 @ProxyGen
 @VertxGen
 public interface RedisService {
-
+  static RedisService create(Vertx vertx) {
+    return new RedisProvider(vertx);
+  }
   static RedisService createProxy(Vertx vertx, String address) {
     return new RedisServiceVertxEBProxy(vertx, address);
   }

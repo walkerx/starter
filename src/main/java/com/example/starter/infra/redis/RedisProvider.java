@@ -1,5 +1,9 @@
 package com.example.starter.infra.redis;
 
-public class RedisProvider implements RedisService{
+import io.vertx.core.Vertx;
 
+public class RedisProvider implements RedisService{
+  RedisProvider(Vertx vertx){
+
+  }
 }
